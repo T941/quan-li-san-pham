@@ -13,7 +13,7 @@
 </head>
 <body>
 <h1>Products</h1>
-<a href="/products?action=search">phần tìm kiếm ở dưới chưa dùng đc đâu em đang sửa muốn tìm kiếm ấn vào đây</a>
+
 <form method="post">
     <input type="text" name="name">
     <input type="submit" value="Search">

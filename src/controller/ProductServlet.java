@@ -17,6 +17,21 @@ public class ProductServlet extends javax.servlet.http.HttpServlet {
     private ProductService productService = new ProductServiceImpl();
 
     protected void doPost(javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse response) throws javax.servlet.ServletException, IOException {
+        String name = request.getParameter("name");
+        RequestDispatcher dispatcher;
+        Product product = this.productService.findByName(name);
+        if (product == null) {
+            dispatcher = request.getRequestDispatcher("error-404.jsp");
+        } else {
+            request.setAttribute("product", product);
+            dispatcher = request.getRequestDispatcher("product/view.jsp");
+        }try {
+            dispatcher.forward(request,response);
+        }catch (ServletException e){
+            e.printStackTrace();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
         String action = request.getParameter("action");
         if (action == null) {
             action = "";
@@ -31,9 +46,7 @@ public class ProductServlet extends javax.servlet.http.HttpServlet {
             case "delete":
                 deleteProduct(request, response);
                 break;
-            case "search":
-                searchProduct(request, response);
-                break;
+
 
 
             default:
@@ -60,23 +73,7 @@ public class ProductServlet extends javax.servlet.http.HttpServlet {
         }
     }
 
-    private void searchProduct(HttpServletRequest request, HttpServletResponse response) {
-        String name = request.getParameter("name");
-        RequestDispatcher dispatcher;
-        Product product = this.productService.findByName(name);
-        if (product == null) {
-            dispatcher = request.getRequestDispatcher("error-404.jsp");
-        } else {
-            request.setAttribute("product", product);
-            dispatcher = request.getRequestDispatcher("product/view.jsp");
-        }try {
-            dispatcher.forward(request,response);
-        }catch (ServletException e){
-            e.printStackTrace();
-        }catch (IOException e){
-            e.printStackTrace();
-        }
-    }
+
 
     private void deleteProduct(HttpServletRequest request, HttpServletResponse response) {
         int id = Integer.parseInt(request.getParameter("id"));
