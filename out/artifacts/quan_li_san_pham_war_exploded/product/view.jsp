@@ -12,10 +12,11 @@
 </head>
 <body>
 <h1>Product details</h1>
+
 <p>
     <a href="/products">Back to product list</a>
 </p>
-<table>
+<table border="1">
     <tr>
         <td>Name: </td>
         <td>${requestScope["product"].getName()}</td>
@@ -33,6 +34,11 @@
         <td>${requestScope["product"].getProducer()}</td>
     </tr>
 
+
+
+
 </table>
+<img src="<%=request.getContextPath()%>/images/${product.getImages()}" height="100px" width="100px">
+
 </body>
 </html>

@@ -13,8 +13,9 @@
 </head>
 <body>
 <h1>Products</h1>
-<a href="/products?action=search">phần tìm kiếm ở dưới chưa dùng đc đâu em đang sửa muốn tìm kiếm ấn vào đây</a>
-<form method="post">
+
+<form method="post" action="/products?action=search">
+
     <input type="text" name="name">
     <input type="submit" value="Search">
 </form>
@@ -28,6 +29,7 @@
         <td>Price</td>
         <td>Describe</td>
         <td>Producer</td>
+        <td>images</td>
         <td>Edit</td>
         <td>Delete</td>
     </tr>
@@ -37,6 +39,7 @@
             <td>${product.getPrice()}</td>
             <td>${product.getDescribe()}</td>
             <td>${product.getProducer()}</td>
+            <td><img src="<%=request.getContextPath()%>/images/${product.getImages()}" height="40px" width="40px"></td>
             <td><a href="/products?action=edit&id=${product.getId()}">edit</a> </td>
             <td><a href="/products?action=delete&id=${product.getId()}">delete</a> </td>
         </tr>

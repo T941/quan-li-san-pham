@@ -12,11 +12,11 @@ public class ProductServiceImpl implements ProductService {
 
     static {
         products = new HashMap<>();
-        products.put(1, new Product(1, "xuc xich", 50000, "do an", "sk"));
-        products.put(2, new Product(2, "keo", 2000, "do an", "sk"));
-        products.put(3, new Product(3, "X455", 1400000, "may tinh", "sk"));
-        products.put(4, new Product(4, "x2", 160000, "mouse", "sk"));
-        products.put(5, new Product(5, "X3", 1500000, "xe dap", "sk"));
+        products.put(1, new Product(1, "A9", 50000, "dt", "samsung","A9.webp"));
+        products.put(2, new Product(2, "A7", 2000, "dt", "samsung","A7.jpeg"));
+        products.put(3, new Product(3, "A50", 1400000, "dt", "samsung","A50.webp"));
+        products.put(4, new Product(4, "M20", 160000, "dt", "samsung","M20.jpeg"));
+        products.put(5, new Product(5, "IP X", 1500000, "dt", "apple","IP X.jpeg"));
     }
 
     @Override
@@ -56,6 +56,8 @@ public class ProductServiceImpl implements ProductService {
     public void remove(int id) {
         products.remove(id);
     }
+
+
 
 
 }

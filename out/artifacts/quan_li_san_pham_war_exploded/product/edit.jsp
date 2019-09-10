@@ -21,7 +21,7 @@
 <p>
     <a href="/products">Back to product list</a>
 </p>
-<form method="post">
+<form method="post" enctype="multipart/form-data">
     <fieldset>
         <legend>Product information</legend>
         <table>
@@ -42,8 +42,15 @@
                 <td><input id="producer" type="text" name="producer"value="${requestScope["product"].getProducer()}"></td>
             </tr>
             <tr>
+                <td>Picture</td>
+                <td>
+                    <img src="<%=request.getContextPath()%>/images/${requestScope["product"].getImages()}" height="30px">
+                    <input type="file" name="picture" id="picture" >
+                </td>
+            </tr>
+            <tr>
                 <td></td>
-                <td><input type="submit" name="Update customer"></td>
+                <td><input type="submit" name="Update product"></td>
             </tr>
         </table>
     </fieldset>
